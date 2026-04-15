@@ -10,7 +10,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.ui.tooling.preview.Preview
 
+
+
+@Preview(showBackground = true)
 @Composable
 fun BotonesScreen() {
 

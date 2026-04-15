@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-
+import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun DrawerMenu(
     selectedOption: String,
@@ -70,5 +70,14 @@ fun DrawerItem(
         icon = { Icon(icon, contentDescription = text) },
         modifier = Modifier.padding(horizontal = 8.dp),
         shape = RoundedCornerShape(0.dp)
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DrawerMenuPreview() {
+    DrawerMenu(
+        selectedOption = "Perfil",
+        onOptionSelected = {}
     )
 }

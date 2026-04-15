@@ -2,9 +2,12 @@ package com.example.apppoli.ui
 
 import androidx.compose.runtime.Composable
 import com.example.apppoli.ui.screens.*
+import androidx.compose.ui.tooling.preview.Preview
 
+
+@Preview(showBackground = true)
 @Composable
-fun RightContent(option: String) {
+fun RightContent(option: String = "Perfil") {
 
     when (option) {
         "Perfil" -> PerfilScreen()
