@@ -3,6 +3,8 @@ package com.example.apppoli.ui
 import androidx.compose.runtime.Composable
 import com.example.apppoli.ui.screens.*
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.apppoli.ui.screen.BotonesScreen
+import com.example.apppoli.ui.screen.VideoScreen
 
 
 @Preview(showBackground = true)

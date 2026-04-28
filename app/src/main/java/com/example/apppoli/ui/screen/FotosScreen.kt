@@ -9,22 +9,28 @@ import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
-
-
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import com.example.apppoli.R
 
 @Preview(showBackground = true)
 @Composable
 fun FotosScreen() {
 
     val fotos = listOf(
-        "Imagen 1",
-        "Imagen 2",
-        "Imagen 3"
+        R.drawable.img1,
+        R.drawable.img2,
+        R.drawable.img3
     )
 
-    var seleccion by remember { mutableStateOf("") }
+    var seleccion by remember { mutableStateOf<Int?>(null) }
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
 
         Text(
             text = "Galería",
@@ -36,27 +42,30 @@ fun FotosScreen() {
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(fotos) { nombre ->
+            items(fotos) { imagenRes ->
 
                 Card(
                     modifier = Modifier
                         .width(200.dp)
                         .clickable {
-                            seleccion = nombre
+                            seleccion = imagenRes
                         },
                     shape = RoundedCornerShape(16.dp)
                 ) {
 
                     Column {
 
-                        Box(
+                        Image(
+                            painter = painterResource(id = imagenRes),
+                            contentDescription = "Imagen",
+                            contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(140.dp)
                         )
 
                         Text(
-                            text = nombre,
+                            text = "Imagen",
                             modifier = Modifier.padding(12.dp)
                         )
                     }
@@ -66,12 +75,28 @@ fun FotosScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        if (seleccion.isNotEmpty()) {
+        seleccion?.let { imagenSeleccionada ->
+
             Card(modifier = Modifier.fillMaxWidth()) {
-                Text(
-                    text = "Seleccionaste: $seleccion",
-                    modifier = Modifier.padding(16.dp)
-                )
+
+                Column(modifier = Modifier.padding(16.dp)) {
+
+                    Text(
+                        text = "Imagen seleccionada",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Image(
+                        painter = painterResource(id = imagenSeleccionada),
+                        contentDescription = "Imagen seleccionada",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(200.dp)
+                    )
+                }
             }
         }
     }
